@@ -204,6 +204,7 @@ namespace RecipeRESTFull.DAL
                             cmd.Parameters.Add("@DateCreated", SqlDbType.DateTime2).Value = DateTime.UtcNow;
 
                             recipeId = (int)await cmd.ExecuteScalarAsync().ConfigureAwait(false);
+                            recipe.ID = recipeId;
                         }
 
                         foreach (var ingrediant in recipe.Ingrediants)
@@ -215,7 +216,7 @@ namespace RecipeRESTFull.DAL
                                 command.Parameters.Add("@count", SqlDbType.Int).Value = ingrediant.Count;
                                 command.Parameters.Add("@DateCreated", SqlDbType.DateTime2).Value = DateTime.UtcNow;
 
-                                await command.ExecuteScalarAsync().ConfigureAwait(false);
+                                ingrediant.ID = (int)await command.ExecuteScalarAsync().ConfigureAwait(false);
                             }
                         }
                     }

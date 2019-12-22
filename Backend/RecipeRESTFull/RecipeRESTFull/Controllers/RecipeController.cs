@@ -50,12 +50,6 @@ namespace RecipeRESTFull.Controllers
             return Ok();
         }
 
-        // PUT api/values/5
-        [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
-        {
-        }
-
         // DELETE api/values/5
         [HttpDelete("delete/{id}")]
         public async Task<ActionResult<bool>> Delete(int id)
